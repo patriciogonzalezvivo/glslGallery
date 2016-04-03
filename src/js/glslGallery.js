@@ -44,7 +44,13 @@ export default class GlslGallery {
             for (let i in logs) {
                 let item = document.createElement('div');
                 item.setAttribute('class', 'glslGallery_item');
-                item.innerHTML = '<a href="http://player.thebookofshaders.com/?log='+logs[i]+'" data='+logs[i]+' target="_blank" onmouseenter="GlslGallery_mouseIn(this)" onmouseleave="GlslGallery_mouseOut(this)"> <img class="glslGallery_thumb" src="http://thebookofshaders.com/log/'+logs[i]+'.png"></a>';
+
+                if ( logs[i].match(/\d\d\/.*/) ){
+                    console.log(logs[i]);
+                    item.innerHTML = '<a href="http://thebookofshaders.com/edit.html#'+logs[i]+'.frag" data='+logs[i]+' target="_blank" onmouseenter="GlslGallery_mouseIn(this)" onmouseleave="GlslGallery_mouseOut(this)"><img class="glslGallery_thumb" src="http://thebookofshaders.com/'+logs[i]+'.png"></a>';
+                } else {
+                    item.innerHTML = '<a href="http://player.thebookofshaders.com/?log='+logs[i]+'" data='+logs[i]+' target="_blank" onmouseenter="GlslGallery_mouseIn(this)" onmouseleave="GlslGallery_mouseOut(this)"><img class="glslGallery_thumb" src="http://thebookofshaders.com/log/'+logs[i]+'.png"></a>';
+                }
                 this.container.appendChild(item);
             }
         }
@@ -60,7 +66,14 @@ export default class GlslGallery {
 function GlslGallery_mouseIn (el) {
     var img = el.getElementsByTagName('img');
 
-    var url = 'http://thebookofshaders.com/log/' + el.getAttribute('data') + '.frag';
+    var data = el.getAttribute('data');
+    var url = '';
+    if (data.match(/\d\d\/.*/)) {
+        url = 'http://thebookofshaders.com/' + data + '.frag';
+    } else {
+        url = 'http://thebookofshaders.com/log/' + data + '.frag';
+    }
+
     xhr.get(url, (error, res, body) => {
         if (error) {
             console.error('Error downloading ', shader, error);
@@ -86,15 +99,6 @@ function GlslGallery_loadAll() {
         window.GlslGallery = GlslGallery;
     }
 
-    var list = document.getElementsByClassName('glslGallery');
-    if (list.length>0) {
-        window.glslGalleries = [];
-        for (var i = 0; i < list.length; i++) {
-            var gallery = new GlslGallery(list[i]);
-            window.glslGalleries.push(gallery);
-        }
-    }
-
     if (!window.glslGallery_canvas) {
         var canvas = document.createElement("canvas");
         canvas.setAttribute('class','glslGallery_canvas');
@@ -102,7 +106,6 @@ function GlslGallery_loadAll() {
         canvas.style.height = '250px';
         canvas.width = '250px';
         canvas.height = '250px';
-
         window.glslGallery_canvas = new GlslCanvas(canvas);
     }
 
@@ -112,6 +115,15 @@ function GlslGallery_loadAll() {
 
     if (!window.GlslGallery_mouseOut) {
         window.GlslGallery_mouseOut = GlslGallery_mouseOut;
+    }
+
+    var list = document.getElementsByClassName('glslGallery');
+    if (list.length>0) {
+        window.glslGalleries = [];
+        for (var i = 0; i < list.length; i++) {
+            var gallery = new GlslGallery(list[i]);
+            window.glslGalleries.push(gallery);
+        }
     }
 }
 
