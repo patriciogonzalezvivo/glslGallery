@@ -68,6 +68,25 @@ function GlslGallery_loadAll() {
             window.glslGalleries.push(gallery);
         }
     }
+
+    if (!window.glslGallery_canvas) {
+        var canvas = document.createElement("canvas");
+        canvas.setAttribute('class','glslGallery_canvas');
+        canvas.style.width = '250px';
+        canvas.style.height = '250px';
+        canvas.width = '250px';
+        canvas.height = '250px';
+
+        window.glslGallery_canvas = new GlslCanvas(canvas);
+    }
+
+    if (!window.GlslGallery_mouseIn) {
+        window.GlslGallery_mouseIn = GlslGallery_mouseIn;
+    }
+
+    if (!window.GlslGallery_mouseOut) {
+        window.GlslGallery_mouseOut = GlslGallery_mouseOut;
+    }
 }
 
 function GlslGallery_mouseIn (el) {
@@ -94,24 +113,5 @@ function GlslGallery_mouseOut (el) {
 }
 
 window.onload = function () { 
-    if (!window.glslGallery_canvas) {
-        var canvas = document.createElement("canvas");
-        canvas.setAttribute('class','glslGallery_canvas');
-        canvas.style.width = '250px';
-        canvas.style.height = '250px';
-        canvas.width = '250px';
-        canvas.height = '250px';
-
-        window.glslGallery_canvas = new GlslCanvas(canvas);
-    }
-
-    if (!window.GlslGallery_mouseIn) {
-        window.GlslGallery_mouseIn = GlslGallery_mouseIn;
-    }
-
-    if (!window.GlslGallery_mouseOut) {
-        window.GlslGallery_mouseOut = GlslGallery_mouseOut;
-    }
-
     GlslGallery_loadAll();
 };
