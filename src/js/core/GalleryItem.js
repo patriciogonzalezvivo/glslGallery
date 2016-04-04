@@ -65,7 +65,7 @@ export default class GalleryItem {
 
         let bbox = this.el.getBoundingClientRect();
         window.glslGallery_canvas.canvas.style.height = this.img.offsetHeight + 'px';
-        this.el.appendChild(window.glslGallery_canvas.canvas);
+        this.link.appendChild(window.glslGallery_canvas.canvas);
     }
 
     setCode (code) {
