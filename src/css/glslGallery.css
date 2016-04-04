@@ -15,10 +15,11 @@
     --ui-border-color: #999ca0;
     --modal-shadow: 0 0 0 5px rgba(0,0,0,0.2), 0 4px 8px 0 rgba(0,0,0,0.25);
 
-    --z-gallery: 1;
-    --z-item: 2;
-    --z-thumb: 3;
+    --z-gallery: 100;
+    --z-item: 101;
+    --z-thumb: 102;
     --z-canvas: 103;
+    --z-credits: 104;
 }
 
 .glslGallery {
@@ -49,4 +50,35 @@
 
 .glslGallery_canvas:hover {
     opacity:1;
+}
+
+.glslGallery_credits {
+    position: absolute; 
+    bottom: 5px; 
+    left: 5px; 
+    background: rgba(0,0,0,.5);
+    padding: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin: 0px;
+    z-index: var(--z-credits);
+}
+
+.glslGallery_label {
+    color: white;
+    font-family: Helvetica, Arial, sans-serif;
+    text-decoration: none; 
+    line-height: 0.0;
+    z-index: var(--z-credits);
+}
+
+.glslGallery_title {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.glslGallery_author {
+    font-size: 10px; 
+    font-style: italic;
+    font-weight: 100;
 }

@@ -21,7 +21,7 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-import xhr from 'xhr';
+import GalleryItem from 'app/core/GalleryItem';
 
 export default class GlslGallery {
     constructor(selector, options) {
@@ -37,21 +37,13 @@ export default class GlslGallery {
             return;
         }
 
-        options = options || {};
+        this.options = options || {};
+        this.items = [];
 
         if (selector.hasAttribute('data')) {
-            let logs = selector.getAttribute('data').split(',');
-            for (let i in logs) {
-                let item = document.createElement('div');
-                item.setAttribute('class', 'glslGallery_item');
-
-                if ( logs[i].match(/\d\d\/.*/) ){
-                    console.log(logs[i]);
-                    item.innerHTML = '<a href="http://thebookofshaders.com/edit.html#'+logs[i]+'.frag" data='+logs[i]+' target="_blank" onmouseenter="GlslGallery_mouseIn(this)" onmouseleave="GlslGallery_mouseOut(this)"><img class="glslGallery_thumb" src="http://thebookofshaders.com/'+logs[i]+'.png"></a>';
-                } else {
-                    item.innerHTML = '<a href="http://player.thebookofshaders.com/?log='+logs[i]+'" data='+logs[i]+' target="_blank" onmouseenter="GlslGallery_mouseIn(this)" onmouseleave="GlslGallery_mouseOut(this)"><img class="glslGallery_thumb" src="http://thebookofshaders.com/log/'+logs[i]+'.png"></a>';
-                }
-                this.container.appendChild(item);
+            let data = selector.getAttribute('data').split(',');
+            for (let i in data) {
+                this.items.push(new GalleryItem(data[i], this, this.options));
             }
         }
 
@@ -63,58 +55,9 @@ export default class GlslGallery {
     }
 }
 
-function GlslGallery_mouseIn (el) {
-    var img = el.getElementsByTagName('img');
-
-    var data = el.getAttribute('data');
-    var url = '';
-    if (data.match(/\d\d\/.*/)) {
-        url = 'http://thebookofshaders.com/' + data + '.frag';
-    } else {
-        url = 'http://thebookofshaders.com/log/' + data + '.frag';
-    }
-
-    xhr.get(url, (error, res, body) => {
-        if (error) {
-            console.error('Error downloading ', shader, error);
-            return;
-        }
-        window.glslGallery_canvas.load(body);
-
-        let bbox = el.getBoundingClientRect();
-        window.glslGallery_canvas.canvas.style.height = img[0].offsetHeight + 'px';
-    });
-
-    el.appendChild(window.glslGallery_canvas.canvas);
-} 
-
-
-function GlslGallery_mouseOut (el) {
-    el.removeChild(window.glslGallery_canvas.canvas);
-}
-
 function GlslGallery_loadAll() {
-
     if (!window.GlslGallery) {
         window.GlslGallery = GlslGallery;
-    }
-
-    if (!window.glslGallery_canvas) {
-        var canvas = document.createElement("canvas");
-        canvas.setAttribute('class','glslGallery_canvas');
-        canvas.style.width = '250px';
-        canvas.style.height = '250px';
-        canvas.width = '250px';
-        canvas.height = '250px';
-        window.glslGallery_canvas = new GlslCanvas(canvas);
-    }
-
-    if (!window.GlslGallery_mouseIn) {
-        window.GlslGallery_mouseIn = GlslGallery_mouseIn;
-    }
-
-    if (!window.GlslGallery_mouseOut) {
-        window.GlslGallery_mouseOut = GlslGallery_mouseOut;
     }
 
     var list = document.getElementsByClassName('glslGallery');
