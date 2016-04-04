@@ -18,6 +18,7 @@ export default class GalleryItem {
 
         this.credits = document.createElement('div');
         this.credits.setAttribute('class', 'glslGallery_credits');
+        this.credits.style.visibility = "hidden";
 
         if ( this.id.match(/\d\d\/.*/) ){
             this.link.setAttribute('href', 'http://thebookofshaders.com/edit.html#'+this.id+'.frag');
@@ -77,6 +78,7 @@ export default class GalleryItem {
                 authorEl.setAttribute('class', 'glslGallery_label glslGallery_author');
                 authorEl.innerHTML = this.author;
                 this.credits.appendChild(authorEl);
+                this.credits.style.visibility = "visible";
             }
         }
         
@@ -87,6 +89,7 @@ export default class GalleryItem {
                 titleEl.setAttribute('class', 'glslGallery_label glslGallery_title');
                 titleEl.innerHTML = this.title;
                 this.credits.appendChild(titleEl);
+                this.credits.style.visibility = "visible";
             }
         }
     }
