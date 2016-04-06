@@ -1,5 +1,7 @@
 [GlslGallery](https://github.com/patriciogonzalezvivo/glslGallery) is JavaScript tool part of [The Book of Shaders](http://thebookofshaders.com) ecosystem that lets you curate your own gallery of shaders created with [The Book of Shader's editor (glslEditor)](http://editor.thebookofshaders.com).
 
+![](imgs/01.gif)
+
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4BQMKQJDQ9XH6)
 
 ## How to use it?
