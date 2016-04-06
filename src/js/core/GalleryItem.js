@@ -1,4 +1,5 @@
 import xhr from 'xhr';
+import OpenFrameIcon from '../addons/openFrameIcon';
 
 export default class GalleryItem {
     constructor (id, main, options) {
@@ -37,6 +38,10 @@ export default class GalleryItem {
         if (this.options.hoverPreview) {
             this.el.addEventListener("mouseenter", () => {onEnter(this)});
             this.el.addEventListener("mouseleave", () => {onLeave(this)});
+        }
+
+        if (this.options.openFrameIcon) {
+            this.openFrameIcon = new OpenFrameIcon(this);
         }
         
         this.init();

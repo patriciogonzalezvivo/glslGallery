@@ -31,8 +31,8 @@ There are some properties you can pass to ```glslGallery``` through the ```data-
 |```clickRun```| ```player``` or ```editor``` | ```player``` |
 |```showAuthor```| ```true``` or ```false``` | ```true``` |
 |```showTitle```| ```true``` or ```false``` | ```true``` |
-|```openframe```| ```true``` or ```false``` | ```true``` |
 |```hoverPreview```| ```true``` or ```false``` | ```true``` |
+|```openframe```| ```true``` or ```false``` | ```true``` |
 
 For example you can do:
 

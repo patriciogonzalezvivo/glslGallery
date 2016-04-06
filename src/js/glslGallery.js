@@ -51,6 +51,10 @@ export default class GlslGallery {
             this.options.hoverPreview = true;
         }
 
+        if (!this.options.openFrameIcon) {
+            this.options.openFrameIcon = true;
+        }
+
         if (!this.options.clickRun) {
             this.options.clickRun = 'player';
         }
