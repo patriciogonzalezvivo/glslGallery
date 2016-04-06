@@ -24,7 +24,7 @@ export default class GalleryItem {
             this.link.setAttribute('href', 'http://thebookofshaders.com/edit.html#'+this.id+'.frag');
             this.img.src = 'http://thebookofshaders.com/'+this.id+'.png';
         } else {
-            this.link.setAttribute('href', 'http://player.thebookofshaders.com/?log='+this.id);
+            this.link.setAttribute('href', 'http://'+this.options.clickRun+'.thebookofshaders.com/?log='+this.id);
             this.img.src = 'http://thebookofshaders.com/log/'+this.id+'.png';
         }
 
@@ -34,9 +34,11 @@ export default class GalleryItem {
         this.main.container.appendChild(this.el);
 
         // Add events
-        this.el.addEventListener("mouseenter", () => {onEnter(this)});
-        this.el.addEventListener("mouseleave", () => {onLeave(this)});
-
+        if (this.options.hoverPreview) {
+            this.el.addEventListener("mouseenter", () => {onEnter(this)});
+            this.el.addEventListener("mouseleave", () => {onLeave(this)});
+        }
+        
         this.init();
     }
 
@@ -71,7 +73,7 @@ export default class GalleryItem {
     setCode (code) {
         this.source = code;
 
-        if (!this.author) {
+        if (!this.author && this.options.showAuthor) {
             this.author = this.getAuthor();
             if (this.author !== 'unknown') {
                 let authorEl = document.createElement('p');
@@ -82,7 +84,7 @@ export default class GalleryItem {
             }
         }
         
-        if (!this.title) {
+        if (!this.title && this.options.showTitle) {
             this.title = this.getTitle();
             if (this.title !== 'unknown') {
                 let titleEl = document.createElement('p');
@@ -158,6 +160,8 @@ function onEnter (item) {
 function onLeave (item) {
     initCanvas();
 
-    // Remove glslCanvas instance from item
-    item.el.removeChild(window.glslGallery_canvas.canvas);
+    if (item.el.getElementsByClassName('glslGallery_canvas') > 0) {
+        // Remove glslCanvas instance from item
+        item.el.removeChild(window.glslGallery_canvas.canvas);
+    }
 }

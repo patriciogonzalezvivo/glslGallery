@@ -38,7 +38,36 @@ export default class GlslGallery {
         }
 
         this.options = options || {};
+
+        if (!this.options.showAuthor) {
+            this.options.showAuthor = true;
+        }
+
+        if (!this.options.showTitle) {
+            this.options.showTitle = true;
+        }
+
+        if (!this.options.hoverPreview) {
+            this.options.hoverPreview = true;
+        }
+
+        if (!this.options.clickRun) {
+            this.options.clickRun = 'player';
+        }
+
         this.items = [];
+
+        if (selector.hasAttribute('data-properties')) {
+            let prop = selector.getAttribute('data-properties').split(',');
+            for (let i in prop) {
+                let values = prop[i].split(':');
+                if (values.length === 1) {
+                    this.options[values[0]] = true;
+                } else if (values.length === 2) {
+                    this.options[values[0]] = (values[1] === 'true' || values[1] === 'false')? (values[1] === 'true') : values[1];
+                }
+            }
+        }
 
         if (selector.hasAttribute('data')) {
             let data = selector.getAttribute('data').split(',');

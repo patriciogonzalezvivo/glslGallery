@@ -18,12 +18,29 @@ Then when you create a new shader on [The Book of Shader's editor ](http://edito
 
 ![](imgs/00.gif)
 
-Use those log numbers to curate your own gallery of shaders by adding them to the ```data``` atribute of a ```<div>``` member of the ```class``` name ```glslGallery``` and you are ready to go.
+Use those log numbers to curate your own gallery of shaders by adding them to the ```data``` attribute of a ```<div>``` member of the ```class``` name ```glslGallery``` and you are ready to go.
 
 ```html
 <div class="glslGallery" data="160401213245,160313193711,160313030533,160313025607,160313020334,160308160958,160308014412,160307213819,160306213426,160304203554,160304202332,160302022724,160219112614,160302003807,160302102102,160302101618"></div>
 ```
 
+There are some properties you can pass to ```glslGallery``` through the ```data-properties``` attribute to customize your gallery.
+
+|propertie | values | default value |
+|----------|--------|---------------|
+|```clickRun```| ```player``` or ```editor``` | ```player``` |
+|```showAuthor```| ```true``` or ```false``` | ```true``` |
+|```showTitle```| ```true``` or ```false``` | ```true``` |
+|```openframe```| ```true``` or ```false``` | ```true``` |
+|```hoverPreview```| ```true``` or ```false``` | ```true``` |
+
+For example you can do:
+
+```html
+<div class="glslGallery" data="10/ikeda-00,10/ikeda-03,10/ikeda-04,160401213245,160313193711,160313030533,160313025607,160313020334,160308160958,160308014412" data-properties="clickRun:editor,showAuthor:false,hoverPreview:false"></div>
+```
+
+## How to style it?
 Then you can style it by overwriting the following css classes:
 
 ```
