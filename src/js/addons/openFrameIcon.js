@@ -5,8 +5,10 @@ export default class OpenFrameIcon {
         this.el = document.createElement('div');
         this.el.setAttribute('class', 'glslGallery_openFrameIcon');
         this.el.innerHTML = '[o]';
-        this.el.addEventListener('click', () => { 
-            createOpenFrameArtwork(this.parent, () => { console.log(event); });
+        this.el.addEventListener('click', () => {
+            createOpenFrameArtwork(this.parent, () => {
+                console.log(event);
+            });
         }, true);
 
         this.parent.el.appendChild(this.el);
@@ -16,7 +18,7 @@ export default class OpenFrameIcon {
 export function createOpenFrameArtwork(item, callback) {
     let id = item.id;
     let title = item.title || 'unknow';
-    let author = item.author || 'unknow'
+    let author = item.author || 'unknow';
     let xhr = new XMLHttpRequest();
     callback = callback || () => {};
     // anywhere in the API that user {id} is needed, the alias 'current' can be used for the logged-in user
@@ -50,7 +52,8 @@ export function createOpenFrameArtwork(item, callback) {
     let url = '';
     if (id.match(/\d\d\/.*/)) {
         url = 'http://thebookofshaders.com/' + id;
-    } else {
+    }
+    else {
         url = 'http://thebookofshaders.com/log/' + id;
     }
 

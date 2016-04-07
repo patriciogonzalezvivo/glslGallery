@@ -6,7 +6,7 @@ export default class GalleryItem {
         this.id = id;
         this.main = main;
         this.options = options;
-        
+
         // Construct Item
         this.el = document.createElement('div');
         this.el.setAttribute('class', 'glslGallery_item');
@@ -19,14 +19,15 @@ export default class GalleryItem {
 
         this.credits = document.createElement('div');
         this.credits.setAttribute('class', 'glslGallery_credits');
-        this.credits.style.visibility = "hidden";
+        this.credits.style.visibility = 'hidden';
 
-        if ( this.id.match(/\d\d\/.*/) ){
-            this.link.setAttribute('href', 'http://thebookofshaders.com/edit.html#'+this.id+'.frag');
-            this.img.src = 'http://thebookofshaders.com/'+this.id+'.png';
-        } else {
-            this.link.setAttribute('href', 'http://'+this.options.clickRun+'.thebookofshaders.com/?log='+this.id);
-            this.img.src = 'http://thebookofshaders.com/log/'+this.id+'.png';
+        if (this.id.match(/\d\d\/.*/)) {
+            this.link.setAttribute('href', 'http://thebookofshaders.com/edit.html#' + this.id + '.frag');
+            this.img.src = 'http://thebookofshaders.com/' + this.id + '.png';
+        }
+        else {
+            this.link.setAttribute('href', 'http://' + this.options.clickRun + '.thebookofshaders.com/?log=' + this.id);
+            this.img.src = 'http://thebookofshaders.com/log/' + this.id + '.png';
         }
 
         this.link.appendChild(this.img);
@@ -36,14 +37,18 @@ export default class GalleryItem {
 
         // Add events
         if (this.options.hoverPreview) {
-            this.el.addEventListener("mouseenter", () => {onEnter(this)});
-            this.el.addEventListener("mouseleave", () => {onLeave(this)});
+            this.el.addEventListener('mouseenter', () => {
+                onEnter(this);
+            });
+            this.el.addEventListener('mouseleave', () => {
+                onLeave(this);
+            });
         }
 
         if (this.options.openFrameIcon) {
             this.openFrameIcon = new OpenFrameIcon(this);
         }
-        
+
         this.init();
     }
 
@@ -52,13 +57,14 @@ export default class GalleryItem {
             var url = '';
             if (this.id.match(/\d\d\/.*/)) {
                 url = 'http://thebookofshaders.com/' + this.id + '.frag';
-            } else {
+            }
+            else {
                 url = 'http://thebookofshaders.com/log/' + this.id + '.frag';
             }
             let item = this;
             xhr.get(url, (error, res, body) => {
                 if (error) {
-                    console.error('Error downloading ', shader, error);
+                    console.error('Error downloading ', error);
                     return;
                 }
                 item.setCode(body);
@@ -69,8 +75,6 @@ export default class GalleryItem {
     load (code) {
         this.setCode(code);
         window.glslGallery_canvas.load(code);
-
-        let bbox = this.el.getBoundingClientRect();
         window.glslGallery_canvas.canvas.style.height = this.img.offsetHeight + 'px';
         this.link.appendChild(window.glslGallery_canvas.canvas);
     }
@@ -85,10 +89,10 @@ export default class GalleryItem {
                 authorEl.setAttribute('class', 'glslGallery_label glslGallery_author');
                 authorEl.innerHTML = this.author;
                 this.credits.appendChild(authorEl);
-                this.credits.style.visibility = "visible";
+                this.credits.style.visibility = 'visible';
             }
         }
-        
+
         if (!this.title && this.options.showTitle) {
             this.title = this.getTitle();
             if (this.title !== 'unknown') {
@@ -96,7 +100,7 @@ export default class GalleryItem {
                 titleEl.setAttribute('class', 'glslGallery_label glslGallery_title');
                 titleEl.innerHTML = this.title;
                 this.credits.appendChild(titleEl);
-                this.credits.style.visibility = "visible";
+                this.credits.style.visibility = 'visible';
             }
         }
     }
@@ -111,7 +115,7 @@ export default class GalleryItem {
             return result[1].replace(/(\r\n|\n|\r)/gm, '');
         }
         else {
-            return "unknown";
+            return 'unknown';
         }
     }
 
@@ -121,15 +125,15 @@ export default class GalleryItem {
             return result[1].replace(/(\r\n|\n|\r)/gm, '');
         }
         else {
-            return "unknown";
+            return 'unknown';
         }
     }
 }
 
 function initCanvas() {
     if (!window.glslGallery_canvas) {
-        var canvas = document.createElement("canvas");
-        canvas.setAttribute('class','glslGallery_canvas');
+        var canvas = document.createElement('canvas');
+        canvas.setAttribute('class', 'glslGallery_canvas');
         canvas.style.width = '250px';
         canvas.style.height = '250px';
         canvas.width = '250px';
@@ -141,20 +145,21 @@ function initCanvas() {
 function onEnter (item) {
     initCanvas();
 
-    if (item.getCode()){
+    if (item.getCode()) {
         item.load(item.getCode());
-    } 
+    }
     else {
         var url = '';
         if (item.id.match(/\d\d\/.*/)) {
             url = 'http://thebookofshaders.com/' + item.id + '.frag';
-        } else {
+        }
+        else {
             url = 'http://thebookofshaders.com/log/' + item.id + '.frag';
         }
 
         xhr.get(url, (error, res, body) => {
             if (error) {
-                console.error('Error downloading ', shader, error);
+                console.error('Error downloading ', error);
                 return;
             }
             item.load(body);

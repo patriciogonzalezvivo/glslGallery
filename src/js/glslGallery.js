@@ -24,8 +24,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 import GalleryItem from 'app/core/GalleryItem';
 
 export default class GlslGallery {
-    constructor(selector, options) {
-
+    constructor (selector, options) {
         if (typeof selector === 'object' && selector.nodeType && selector.nodeType === 1) {
             this.container = selector;
         }
@@ -67,8 +66,9 @@ export default class GlslGallery {
                 let values = prop[i].split(':');
                 if (values.length === 1) {
                     this.options[values[0]] = true;
-                } else if (values.length === 2) {
-                    this.options[values[0]] = (values[1] === 'true' || values[1] === 'false')? (values[1] === 'true') : values[1];
+                }
+                else if (values.length === 2) {
+                    this.options[values[0]] = (values[1] === 'true' || values[1] === 'false') ? (values[1] === 'true') : values[1];
                 }
             }
         }
@@ -88,13 +88,13 @@ export default class GlslGallery {
     }
 }
 
-function GlslGallery_loadAll() {
+function glslGalleryLoadAll() {
     if (!window.GlslGallery) {
         window.GlslGallery = GlslGallery;
     }
 
     var list = document.getElementsByClassName('glslGallery');
-    if (list.length>0) {
+    if (list.length > 0) {
         window.glslGalleries = [];
         for (var i = 0; i < list.length; i++) {
             var gallery = new GlslGallery(list[i]);
@@ -103,6 +103,6 @@ function GlslGallery_loadAll() {
     }
 }
 
-window.onload = function () { 
-    GlslGallery_loadAll();
+window.onload = function () {
+    glslGalleryLoadAll();
 };
