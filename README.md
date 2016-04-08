@@ -6,13 +6,17 @@
 
 ## How to use it?
 
-First add the dependencies to [GlslCanvas](https://github.com/patriciogonzalezvivo/glslCanvas) and [GlslGallery](https://github.com/patriciogonzalezvivo/glslGallery). 
-
+First add [GlslGallery](https://github.com/patriciogonzalezvivo/glslGallery) javascript and CSS files. For example:
 
 ```html
-    <script type="text/javascript" src="http://patriciogonzalezvivo.com/glslCanvas/build/GlslCanvas.min.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.rawgit.com/patriciogonzalezvivo/glslGallery/gh-pages/build/glslGallery.css">
     <script type="text/javascript" src="https://cdn.rawgit.com/patriciogonzalezvivo/glslGallery/gh-pages/build/glslGallery.js"></script>
+```
+
+You can also install it through npm:
+
+```bash
+npm install glslGallery
 ```
 
 Then when you create a new shader on [The Book of Shader's editor ](http://editor.thebookofshaders.com)

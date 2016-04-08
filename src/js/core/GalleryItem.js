@@ -1,4 +1,5 @@
 import xhr from 'xhr';
+import GlslCanvas from 'glslCanvas';
 import OpenFrameIcon from '../addons/openFrameIcon';
 
 export default class GalleryItem {
