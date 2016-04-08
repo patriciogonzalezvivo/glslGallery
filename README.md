@@ -1,6 +1,6 @@
 [GlslGallery](https://github.com/patriciogonzalezvivo/glslGallery) is JavaScript tool part of [The Book of Shaders](http://thebookofshaders.com) ecosystem that lets you curate your own gallery of shaders created with [The Book of Shader's editor (glslEditor)](http://editor.thebookofshaders.com).
 
-![](imgs/01.gif)
+![](http://patriciogonzalezvivo.com/images/glslGallery/01.gif)
 
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4BQMKQJDQ9XH6)
 
@@ -22,7 +22,7 @@ npm install glslGallery
 Then when you create a new shader on [The Book of Shader's editor ](http://editor.thebookofshaders.com)
 [(glslEditor)](https://github.com/patriciogonzalezvivo/glslEditor) you can export two URLs one to the editor and other one to a player. Both use the same log number (ex. `160404125055`).
 
-![](imgs/00.gif)
+![](http://patriciogonzalezvivo.com/images/glslGallery/00.gif)
 
 Use those log numbers to curate your own gallery of shaders by adding them to the ```data``` attribute of a ```<div>``` member of the ```class``` name ```glslGallery``` and you are ready to go.
 
