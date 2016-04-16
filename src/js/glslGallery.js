@@ -78,7 +78,7 @@ export default class GlslGallery {
         }
 
         if (this.options.logs) {
-            this.addItems(logs);
+            this.addItems(this.options.logs);
         }
 
         return this;
@@ -120,6 +120,6 @@ function glslGalleryLoadAll() {
     }
 }
 
-window.onload = function () {
+window.addEventListener('load', function () {
     glslGalleryLoadAll();
-};
+});
