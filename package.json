@@ -1,6 +1,6 @@
 {
   "name": "glslGallery",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Simple Shader gallery from glslEditors",
   "main": "build/glslGallery.js",
   "scripts": {
