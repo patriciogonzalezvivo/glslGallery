@@ -39,11 +39,21 @@ There are some properties you can pass to ```glslGallery``` through the ```data-
 |```showTitle```| ```true``` or ```false``` | ```true``` |
 |```hoverPreview```| ```true``` or ```false``` | ```true``` |
 |```openframe```| ```true``` or ```false``` | ```true``` |
+|```logs```| *string* or *array* | ```null``` |
 
 For example you can do:
 
 ```html
 <div class="glslGallery" data="10/ikeda-00,10/ikeda-03,10/ikeda-04,160401213245,160313193711,160313030533,160313025607,160313020334,160308160958,160308014412" data-properties="clickRun:editor,showAuthor:false,hoverPreview:false"></div>
+```
+
+## Using the glslGallery with JavaScript
+
+You can load the glslGallery library by declaring a new instance pointing to a DOM.
+
+```js
+var dom = document.getElementById('gallery');
+var gallery = new GlslGallery(DOM,{ clickRun: 'editor', logs:['10/ikeda-00', 123456, 1234567, 1345677], showAuthor:false, hoverPreview:false })`
 ```
 
 ## How to style it?

@@ -74,17 +74,34 @@ export default class GlslGallery {
         }
 
         if (selector.hasAttribute('data')) {
-            let data = selector.getAttribute('data').split(',');
-            for (let i in data) {
-                this.items.push(new GalleryItem(data[i], this, this.options));
-            }
+            this.addItems(selector.getAttribute('data'));
+        }
+
+        if (this.options.logs) {
+            this.addItems(logs);
         }
 
         return this;
     }
 
+    addItem (log) {
+        if (typeof log === 'number') {
+            log = log.toString();
+        }
+        this.items.push(new GalleryItem(log, this, this.options));
+    }
+
+    addItems (logs) {
+        if (typeof logs === 'string') {
+            logs = logs.split(',');
+        }
+        for (let i in logs) {
+            this.addItem(logs[i]);
+        }
+    }
+
     version() {
-        return '0.0.1';
+        return '0.0.5';
     }
 }
 
