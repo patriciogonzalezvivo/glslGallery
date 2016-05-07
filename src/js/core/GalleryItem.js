@@ -23,12 +23,12 @@ export default class GalleryItem {
         this.credits.style.visibility = 'hidden';
 
         if (this.id.match(/\d\d\/.*/)) {
-            this.link.setAttribute('href', 'http://thebookofshaders.com/edit.html#' + this.id + '.frag');
-            this.img.src = 'http://thebookofshaders.com/' + this.id + '.png';
+            this.link.setAttribute('href', 'https://thebookofshaders.com/edit.html#' + this.id + '.frag');
+            this.img.src = 'https://thebookofshaders.com/' + this.id + '.png';
         }
         else {
             this.link.setAttribute('href', 'http://' + this.options.clickRun + '.thebookofshaders.com/?log=' + this.id);
-            this.img.src = 'http://thebookofshaders.com/log/' + this.id + '.png';
+            this.img.src = 'https://thebookofshaders.com/log/' + this.id + '.png';
         }
 
         this.link.appendChild(this.img);
@@ -57,10 +57,10 @@ export default class GalleryItem {
         if (!this.source || this.source === '') {
             var url = '';
             if (this.id.match(/\d\d\/.*/)) {
-                url = 'http://thebookofshaders.com/' + this.id + '.frag';
+                url = 'https://thebookofshaders.com/' + this.id + '.frag';
             }
             else {
-                url = 'http://thebookofshaders.com/log/' + this.id + '.frag';
+                url = 'https://thebookofshaders.com/log/' + this.id + '.frag';
             }
             let item = this;
             xhr.get(url, (error, res, body) => {
@@ -152,10 +152,10 @@ function onEnter (item) {
     else {
         var url = '';
         if (item.id.match(/\d\d\/.*/)) {
-            url = 'http://thebookofshaders.com/' + item.id + '.frag';
+            url = 'https://thebookofshaders.com/' + item.id + '.frag';
         }
         else {
-            url = 'http://thebookofshaders.com/log/' + item.id + '.frag';
+            url = 'https://thebookofshaders.com/log/' + item.id + '.frag';
         }
 
         xhr.get(url, (error, res, body) => {

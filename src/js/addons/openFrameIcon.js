@@ -51,10 +51,10 @@ export function createOpenFrameArtwork(item, callback) {
 
     let url = '';
     if (id.match(/\d\d\/.*/)) {
-        url = 'http://thebookofshaders.com/' + id;
+        url = 'https://thebookofshaders.com/' + id;
     }
     else {
-        url = 'http://thebookofshaders.com/log/' + id;
+        url = 'https://thebookofshaders.com/log/' + id;
     }
 
     xhr.send(JSON.stringify({
