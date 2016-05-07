@@ -85,24 +85,24 @@ export default class GalleryItem {
 
         if (!this.author && this.options.showAuthor) {
             this.author = this.getAuthor();
-            if (this.author !== 'unknown') {
+            // if (this.author !== 'unknown') {
                 let authorEl = document.createElement('p');
                 authorEl.setAttribute('class', 'glslGallery_label glslGallery_author');
                 authorEl.innerHTML = this.author;
                 this.credits.appendChild(authorEl);
                 this.credits.style.visibility = 'visible';
-            }
+            // }
         }
 
         if (!this.title && this.options.showTitle) {
             this.title = this.getTitle();
-            if (this.title !== 'unknown') {
+            // if (this.title !== 'unknown') {
                 let titleEl = document.createElement('p');
                 titleEl.setAttribute('class', 'glslGallery_label glslGallery_title');
                 titleEl.innerHTML = this.title;
                 this.credits.appendChild(titleEl);
                 this.credits.style.visibility = 'visible';
-            }
+            // }
         }
     }
 
@@ -116,7 +116,7 @@ export default class GalleryItem {
             return result[1].replace(/(\r\n|\n|\r)/gm, '');
         }
         else {
-            return 'unknown';
+            return 'untitled';
         }
     }
 
@@ -126,7 +126,7 @@ export default class GalleryItem {
             return result[1].replace(/(\r\n|\n|\r)/gm, '');
         }
         else {
-            return 'unknown';
+            return 'anonymous';
         }
     }
 }
