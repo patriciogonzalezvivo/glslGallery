@@ -23,12 +23,17 @@ export default class GalleryItem {
         this.credits.style.visibility = 'hidden';
 
         if (this.id.match(/\d\d\/.*/)) {
-            this.link.setAttribute('href', 'https://thebookofshaders.com/edit.html#' + this.id + '.frag');
+            this.link.setAttribute('href', 'https://thebookofshaders.com/edit.php#' + this.id + '.frag');
             this.img.src = 'https://thebookofshaders.com/' + this.id + '.png';
         }
         else {
-            this.link.setAttribute('href', 'http://' + this.options.clickRun + '.thebookofshaders.com/?log=' + this.id);
-            this.img.src = 'https://thebookofshaders.com/log/' + this.id + '.png';
+            if (this.options.clickRun === "editor") {
+                this.link.setAttribute('href', 'https://thebookofshaders.com/edit.php?log=' + this.id);
+                this.img.src = 'https://thebookofshaders.com/log/' + this.id + '.png';
+            } else {
+                this.link.setAttribute('href', 'http://' + this.options.clickRun + '.thebookofshaders.com/?log=' + this.id);
+                this.img.src = 'https://thebookofshaders.com/log/' + this.id + '.png';
+            }
         }
 
         this.link.appendChild(this.img);
