@@ -1,6 +1,6 @@
 {
   "name": "glslGallery",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Simple Shader gallery from glslEditors",
   "main": "build/glslGallery.js",
   "scripts": {
@@ -52,7 +52,7 @@
   "dependencies": {
     "babel": "^5.8.29",
     "babel-runtime": "5.8.29",
-    "glslCanvas": "^0.0.11",
+    "glslCanvas": "^0.0.13",
     "xhr": "^2.2.0"
   },
   "browserify-shim": {
