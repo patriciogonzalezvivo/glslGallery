@@ -38,7 +38,7 @@ There are some properties you can pass to ```glslGallery``` through the ```data-
 |```showAuthor```| ```true``` or ```false``` | ```true``` |
 |```showTitle```| ```true``` or ```false``` | ```true``` |
 |```hoverPreview```| ```true``` or ```false``` | ```true``` |
-|```openframe```| ```true``` or ```false``` | ```true``` |
+|```openFrameIcon```| ```true``` or ```false``` | ```true``` |
 |```logs```| *string* or *array* | ```null``` |
 
 For example you can do:
